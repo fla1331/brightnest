@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BrightNest — Ecossistema de blogs com propósito</title>
+  <meta name="description" content="BrightNest conecta ideias, conhecimento e inspiração através de blogs especializados. Conheça nossos canais." />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome (ícones) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+  <style>
+    /* ===== RESET & BASE ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #faf9f6;
+      color: #1e1e2a;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      background: #ffffff;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      padding: 18px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(4px);
+      background: rgba(255,255,255,0.92);
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .logo {
+      font-size: 1.7rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo i {
+      color: #c4956a;
+      font-size: 2rem;
+    }
+
+    .logo span {
+      background: linear-gradient(135deg, #c4956a, #8b6b4d);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #2d2d3f;
+      transition: color 0.2s;
+    }
+
+    .nav a:hover {
+      color: #c4956a;
+    }
+
+    .nav .btn-outline {
+      border: 2px solid #c4956a;
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-weight: 700;
+      color: #c4956a;
+      transition: 0.2s;
+    }
+
+    .nav .btn-outline:hover {
+      background: #c4956a;
+      color: #fff;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      text-align: center;
+      padding: 80px 20px 60px;
+      background: linear-gradient(145deg, #f5f0eb 0%, #fff 100%);
+      border-radius: 0 0 40px 40px;
+    }
+
+    .hero h1 {
+      font-size: 3.8rem;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 em {
+      color: #c4956a;
+      font-style: normal;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: #4a4a5a;
+      max-width: 600px;
+      margin: 0 auto 32px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: #e8e0d8;
+      padding: 6px 18px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #5a4a3a;
+      letter-spacing: 0.5px;
+      margin-bottom: 20px;
+    }
+
+    .btn-primary {
+      background: #c4956a;
+      color: #fff;
+      padding: 14px 40px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: all 0.3s;
+      display: inline-block;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      background: #a87b54;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(196, 149, 106, 0.3);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #1e1e2a;
+      padding: 14px 40px;
+      border-radius: 50px;
+      font-weight: 600;
+      border: 2px solid #d0c8c0;
+      transition: 0.3s;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover {
+      border-color: #c4956a;
+      color: #c4956a;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ===== SEÇÃO: ECOSSISTEMA ===== */
+    .section {
+      padding: 70px 0;
+    }
+
+    .section-label {
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      color: #a09080;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 2.6rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+
+    .section-sub {
+      color: #5a5a6a;
+      font-size: 1.1rem;
+      max-width: 600px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .card-site {
+      background: #fff;
+      border-radius: 24px;
+      padding: 32px 24px 28px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      border: 1px solid #f0ece6;
+      transition: all 0.25s;
+      position: relative;
+    }
+
+    .card-site:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+      border-color: #c4956a40;
+    }
+
+    .card-site .icon {
+      font-size: 2.8rem;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .card-site h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .card-site p {
+      color: #5a5a6a;
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+    }
+
+    .card-site .tag {
+      display: inline-block;
+      background: #f0ece6;
+      padding: 2px 14px;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #5a4a3a;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .card-site .link-site {
+      font-weight: 700;
+      color: #c4956a;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 12px;
+      transition: 0.2s;
+    }
+
+    .card-site .link-site:hover {
+      gap: 12px;
+    }
+
+    /* ===== SEÇÃO: SOBRE ===== */
+    .sobre {
+      background: #fff;
+      border-radius: 40px;
+      padding: 60px 48px;
+      margin: 20px 0 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 48px;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid #f0ece6;
+    }
+
+    .sobre-texto {
+      flex: 1 1 300px;
+    }
+
+    .sobre-texto h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .sobre-texto p {
+      color: #4a4a5a;
+      margin-bottom: 12px;
+    }
+
+    .sobre-stats {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .sobre-stats div {
+      text-align: center;
+    }
+
+    .sobre-stats .num {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #c4956a;
+      display: block;
+    }
+
+    .sobre-stats .label {
+      font-size: 0.8rem;
+      color: #7a7a8a;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ===== NEWSLETTER ===== */
+    .newsletter {
+      background: linear-gradient(135deg, #f5f0eb, #e8e0d8);
+      border-radius: 40px;
+      padding: 56px 40px;
+      text-align: center;
+    }
+
+    .newsletter h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .newsletter p {
+      color: #4a4a5a;
+      margin-bottom: 24px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .newsletter-form input {
+      flex: 1 1 220px;
+      padding: 14px 20px;
+      border-radius: 50px;
+      border: 1px solid #d0c8c0;
+      font-size: 1rem;
+      background: #fff;
+      outline: none;
+      transition: 0.2s;
+    }
+
+    .newsletter-form input:focus {
+      border-color: #c4956a;
+      box-shadow: 0 0 0 3px #c4956a30;
+    }
+
+    .newsletter-form button {
+      background: #c4956a;
+      color: #fff;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .newsletter-form button:hover {
+      background: #a87b54;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: #1e1e2a;
+      color: #d0c8c0;
+      padding: 48px 0 24px;
+      margin-top: 60px;
+      border-radius: 40px 40px 0 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 32px;
+    }
+
+    .footer-col h4 {
+      color: #fff;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .footer-col a {
+      display: block;
+      color: #b0a8a0;
+      margin-bottom: 6px;
+      transition: 0.2s;
+      font-size: 0.95rem;
+    }
+
+    .footer-col a:hover {
+      color: #c4956a;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #2e2e3e;
+      padding-top: 24px;
+      margin-top: 32px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #7a7a8a;
+    }
+
+    /* ===== RESPONSIVO ===== */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+      .hero {
+        padding: 50px 16px 40px;
+      }
+      .section-title {
+        font-size: 2rem;
+      }
+      .sobre {
+        padding: 32px 20px;
+      }
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+      .nav {
+        gap: 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-actions {
+        flex-direction: column;
+        align-items: center;
+      }
+      .btn-primary, .btn-secondary {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="/" class="logo">
+        <i class="fas fa-leaf"></i>
+        <span>BrightNest</span>
+      </a>
+      <nav class="nav">
+        <a href="/">Início</a>
+        <a href="#ecossistema">Blogs</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#newsletter">Newsletter</a>
+        <a href="/contato.html" class="btn-outline">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="container">
+      <span class="hero-badge"><i class="fas fa-rocket"></i> Ecossistema em crescimento</span>
+      <h1>Conteúdo com <em>propósito</em>.<br>Inspiração em cada canto.</h1>
+      <p>BrightNest conecta ideias, conhecimento e criatividade através de blogs especializados. Descubra nossos canais e transforme sua casa, sua vida e seus hábitos.</p>
+      <div class="hero-actions">
+        <a href="#ecossistema" class="btn-primary"><i class="fas fa-compass"></i> Explorar blogs</a>
+        <a href="#sobre" class="btn-secondary">Conhecer projeto</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ECOSSISTEMA ===== -->
+  <section class="section" id="ecossistema">
+    <div class="container">
+      <span class="section-label"><i class="fas fa-th-large"></i> Nossos canais</span>
+      <h2 class="section-title">Escolha o seu <br>universo de conteúdo</h2>
+      <p class="section-sub">Cada blog é um espaço dedicado a um tema, com artigos profundos, dicas práticas e inspiração real.</p>
+
+      <div class="grid-3">
+        <!-- CARD 1 -->
+        <div class="card-site">
+          <span class="icon">🏠</span>
+          <h3>HomeDecor</h3>
+          <p>Decoração, móveis, cores, iluminação e dicas para transformar sua casa.</p>
+          <span class="tag">Em destaque</span>
+          <a href="https://homedecor.brightnest.blog" class="link-site">
+            Explorar <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="card-site">
+          <span class="icon">🛋️</span>
+          <h3>Sala de Estar</h3>
+          <p>Inspirações para salas aconchegantes, elegantes e cheias de personalidade.</p>
+          <span class="tag">Novo</span>
+          <a href="https://homedecor.brightnest.blog/sala-de-estar/" class="link-site">
+            Explorar <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="card-site">
+          <span class="icon">🍳</span>
+          <h3>Cozinha</h3>
+          <p>Dicas, organização e decoração para cozinhas práticas e charmosas.</p>
+          <span class="tag">Em breve</span>
+          <a href="#" class="link-site">
+            Em construção <i class="fas fa-tools"></i>
+          </a>
+        </div>
+
+        <!-- CARD 4 -->
+        <div class="card-site">
+          <span class="icon">📚</span>
+          <h3>Leitura & Escrita</h3>
+          <p>Resenhas, técnicas de escrita e dicas para ler mais e melhor.</p>
+          <span class="tag">Em breve</span>
+          <a href="#" class="link-site">
+            Em construção <i class="fas fa-tools"></i>
+          </a>
+        </div>
+
+        <!-- CARD 5 -->
+        <div class="card-site">
+          <span class="icon">🎮</span>
+          <h3>Games & Tech</h3>
+          <p>Análises, notícias e conteúdo sobre o universo gamer e tecnologia.</p>
+          <span class="tag">Em breve</span>
+          <a href="#" class="link-site">
+            Em construção <i class="fas fa-tools"></i>
+          </a>
+        </div>
+
+        <!-- CARD 6 -->
+        <div class="card-site">
+          <span class="icon">🧘</span>
+          <h3>Bem-Estar</h3>
+          <p>Saúde mental, hábitos, meditação e qualidade de vida.</p>
+          <span class="tag">Em breve</span>
+          <a href="#" class="link-site">
+            Em construção <i class="fas fa-tools"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SOBRE ===== -->
+  <section class="section" id="sobre">
+    <div class="container">
+      <div class="sobre">
+        <div class="sobre-texto">
+          <span class="section-label"><i class="fas fa-seedling"></i> Quem somos</span>
+          <h2>BrightNest: um ecossistema de conhecimento</h2>
+          <p>
+            Nascemos com a missão de criar conteúdo relevante, bem escrito e visualmente bonito.
+            Cada blog é um espaço curado para inspirar, ensinar e entreter.
+          </p>
+          <p>
+            Estamos crescendo com calma e consistência. Um blog de cada vez, um artigo de cada vez.
+          </p>
+          <div class="sobre-stats">
+            <div>
+              <span class="num">2</span>
+              <span class="label">Blogs ativos</span>
+            </div>
+            <div>
+              <span class="num">4+</span>
+              <span class="label">Em planejamento</span>
+            </div>
+            <div>
+              <span class="num">100%</span>
+              <span class="label">Foco em qualidade</span>
+            </div>
+          </div>
+        </div>
+        <div style="font-size: 6rem; line-height: 1; opacity: 0.1; font-weight: 800; color: #c4956a;">BN</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NEWSLETTER ===== -->
+  <section class="section" id="newsletter">
+    <div class="container">
+      <div class="newsletter">
+        <h2><i class="fas fa-envelope" style="color: #c4956a;"></i> Fique por dentro</h2>
+        <p>Receba os melhores artigos e novidades dos nossos blogs. Sem spam. Só conteúdo bom.</p>
+        <form class="newsletter-form" action="#" method="POST">
+          <input type="email" placeholder="Seu melhor e-mail" required />
+          <button type="submit">Assinar</button>
+        </form>
+        <p style="font-size: 0.8rem; color: #7a7a8a; margin-top: 16px;">
+          <i class="fas fa-lock"></i> Seus dados estão seguros. Cancelar quando quiser.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-col">
+          <h4><i class="fas fa-leaf" style="color: #c4956a;"></i> BrightNest</h4>
+          <p style="color: #8a8a9a; max-width: 220px;">
+            Conteúdo com propósito. Inspiração em cada canto.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Blogs</h4>
+          <a href="https://homedecor.brightnest.blog">HomeDecor</a>
+          <a href="https://homedecor.brightnest.blog/sala-de-estar/">Sala de Estar</a>
+          <a href="#">Cozinha (em breve)</a>
+        </div>
+        <div class="footer-col">
+          <h4>Institucional</h4>
+          <a href="/sobre.html">Sobre</a>
+          <a href="/contato.html">Contato</a>
+          <a href="/politica-privacidade.html">Privacidade</a>
+          <a href="/cookies.html">Cookies</a>
+        </div>
+        <div class="footer-col">
+          <h4>Redes</h4>
+          <a href="https://instagram.com/topofertas" target="_blank">Instagram</a>
+          <a href="https://facebook.com/topofertas" target="_blank">Facebook</a>
+          <a href="https://twitter.com/topofertas" target="_blank">Twitter</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 BrightNest. Todos os direitos reservados. Feito com <i class="fas fa-heart" style="color: #c4956a;"></i>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
